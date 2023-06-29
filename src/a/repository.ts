@@ -1,7 +1,7 @@
 export class Repository {
   constructor() {}
 
-  async listAllProducts() {
+  async getAllProducts() {
     return [{ message: 'oi' }];
   }
 }
