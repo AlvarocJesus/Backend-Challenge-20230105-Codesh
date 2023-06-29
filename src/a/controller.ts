@@ -6,4 +6,8 @@ export class Controller {
   constructor() {
     this.service = new Service();
   }
+
+  async listAllProducts() {
+    return await this.service.listAllProducts()
+  }
 }

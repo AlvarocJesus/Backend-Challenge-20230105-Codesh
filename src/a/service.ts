@@ -6,4 +6,8 @@ export class Service {
   constructor() {
     this.repository = new Repository();
   }
+
+  async listAllProducts() {
+    return await this.repository.getAllProducts()
+  }
 }
