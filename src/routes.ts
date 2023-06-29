@@ -14,7 +14,7 @@ routes.get('/products', productsController.listAllProducts);
 routes.put('/products/:code');
 
 // Mudar o status do produto para trash
-routes.delete('/products/:code');
+routes.delete('/products/:code', productsController.deleteProduct);
 
 // Obter a informação somente de um produto da base de dados
 routes.get('/products/:code');

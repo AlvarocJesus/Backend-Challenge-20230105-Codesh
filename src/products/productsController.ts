@@ -13,7 +13,21 @@ export class ProductsController {
       const products = await productsService.listAllProducts();
 
       return res.json({ products }).status(201);
-      // return res.json({ entrou: 'deu certo' });
+    } catch (err) {
+      console.log({ err });
+    }
+  }
+
+  async deleteProduct(
+    req: Request,
+    res: Response
+  ): Promise<Response<any, Record<string, any>> | undefined> {
+    try {
+      console.log('entrou no controller');
+      const { code } = req.params;
+      const products = await productsService.deleteProduct(code);
+
+      return res.json({ products }).status(201);
     } catch (err) {
       console.log({ err });
     }
