@@ -17,6 +17,6 @@ routes.put('/products/:code');
 routes.delete('/products/:code', productsController.deleteProduct);
 
 // Obter a informação somente de um produto da base de dados
-routes.get('/products/:code');
+routes.get('/products/:code', productsController.listProduct);
 
 export default routes;
