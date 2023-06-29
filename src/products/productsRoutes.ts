@@ -18,3 +18,5 @@ routes.get('/products/:code');
 
 // Listar todos os produtos da base de dados, adicionar sistema de paginação para não sobrecarregar o REQUEST.
 routes.get('/products', productsController.listAllProducts);
+
+export default routes
