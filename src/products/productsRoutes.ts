@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { Controller } from './controller';
+import { ProductsController } from './productsController';
 
 const routes = Router();
-const controller = new Controller()
+const productsController = new ProductsController()
 
 // Detalhes da API, se conexão leitura e escritura com a base de dados está OK, horário da última vez que o CRON foi executado, tempo online e uso de memória.
 routes.get('/');
@@ -17,4 +17,4 @@ routes.delete('/products/:code');
 routes.get('/products/:code');
 
 // Listar todos os produtos da base de dados, adicionar sistema de paginação para não sobrecarregar o REQUEST.
-routes.get('/products', controller.listAllProducts);
+routes.get('/products', productsController.listAllProducts);

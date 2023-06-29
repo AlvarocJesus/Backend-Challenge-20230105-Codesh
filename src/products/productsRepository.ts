@@ -1,4 +1,4 @@
-export class Repository {
+export class ProductsRepository {
   constructor() {}
 
   async getAllProducts() {
