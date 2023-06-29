@@ -1,7 +1,9 @@
+import db from '../config/database';
+
 export class ProductsRepository {
   constructor() {}
 
   async getAllProducts() {
-    return [{ message: 'oi' }];
+    return await db('SELECT * FROM products');
   }
 }
