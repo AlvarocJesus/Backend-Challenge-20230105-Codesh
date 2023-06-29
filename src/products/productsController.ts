@@ -1,18 +1,21 @@
 import { Request, Response } from 'express';
 import { ProductsService } from './productsService';
 
+const productsService = new ProductsService();
+
 export class ProductsController {
-  private readonly productsService: ProductsService;
+  async listAllProducts(
+    req: Request,
+    res: Response
+  ): Promise<Response<any, Record<string, any>> | undefined> {
+    try {
+      console.log('entrou no controller');
+      const products = await productsService.listAllProducts();
 
-  constructor() {
-    this.productsService = new ProductsService();
-  }
-
-  async listAllProducts(req: Request, res: Response) {
-    console.log('entrou no controller');
-    const products = await this.productsService.listAllProducts();
-
-    return res.json(products);
-    // return res.json({ entrou: 'deu certo' });
+      return res.json({ products }).status(201);
+      // return res.json({ entrou: 'deu certo' });
+    } catch (err) {
+      console.log({ err });
+    }
   }
 }

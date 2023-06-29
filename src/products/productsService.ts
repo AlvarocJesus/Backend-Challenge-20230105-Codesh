@@ -1,13 +1,13 @@
-import { ProductsRepository } from "./productsRepository";
+import AppError from '../errors/AppError';
+import { ProductsRepository } from './productsRepository';
 
+const productsRepository = new ProductsRepository();
 export class ProductsService {
-  private readonly productsRepository: ProductsRepository;
-
-  constructor() {
-    this.productsRepository = new ProductsRepository();
-  }
-
-  async listAllProducts() {
-    return await this.productsRepository.getAllProducts()
+  async listAllProducts(): Promise<void>  {
+    try {
+      return await productsRepository.getAllProducts()
+    } catch (err: any) {
+      throw new AppError(err.message, err.status);
+    }
   }
 }
