@@ -12,7 +12,7 @@ export class ProductsRepository {
 
   async getProduct(code: string): Promise<void> {
     try {
-      return await db('SELECT * FROM products WHERE code = ($1)', [code]);
+      return await db('SELECT * FROM products WHERE code = $1', [code]);
     } catch (err: any) {
       throw new AppError(err);
     }
@@ -20,7 +20,7 @@ export class ProductsRepository {
 
   async removeProducts(code: string): Promise<void> {
     try {
-      return await db('UPDATE products SET status = trash WHERE code = ($1)', [
+      return await db('UPDATE products SET status = trash WHERE code = $1', [
         code,
       ]);
     } catch (err: any) {
