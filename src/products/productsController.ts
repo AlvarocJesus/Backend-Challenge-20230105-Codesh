@@ -9,8 +9,10 @@ export class ProductsController {
   }
 
   async listAllProducts(req: Request, res: Response) {
+    console.log('entrou no controller');
     const products = await this.productsService.listAllProducts();
 
     return res.json(products);
+    // return res.json({ entrou: 'deu certo' });
   }
 }
