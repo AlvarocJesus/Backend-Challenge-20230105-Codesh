@@ -28,12 +28,11 @@ export class ProductsController {
     res: Response
   ): Promise<Response<any, Record<string, any>> | undefined> {
     try {
-      console.log('entrou no controller');
       const products = await productsService.listAllProducts();
 
       return res.json({ products }).status(201);
     } catch (err: any) {
-      throw new AppError(err.message);
+      throw new AppError(err.message, err.status);
     }
   }
 
@@ -42,13 +41,12 @@ export class ProductsController {
     res: Response
   ): Promise<Response<any, Record<string, any>> | undefined> {
     try {
-      console.log('entrou no controller');
       const { code } = req.params;
       const products = await productsService.listProduct(code);
 
       return res.json({ products }).status(201);
     } catch (err: any) {
-      throw new AppError(err.message);
+      throw new AppError(err.message, err.status);
     }
   }
 
@@ -57,14 +55,13 @@ export class ProductsController {
     res: Response
   ): Promise<Response<any, Record<string, any>> | undefined> {
     try {
-      console.log('entrou no controller');
       const { code } = req.params;
       const data = req.body;
       const products = await productsService.updateProduct(code, data);
 
       return res.json({ products }).status(201);
     } catch (err: any) {
-      throw new AppError(err.message);
+      throw new AppError(err.message, err.status);
     }
   }
 
@@ -73,13 +70,12 @@ export class ProductsController {
     res: Response
   ): Promise<Response<any, Record<string, any>> | undefined> {
     try {
-      console.log('entrou no controller');
       const { code } = req.params;
       const products = await productsService.deleteProduct(code);
 
       return res.json({ products }).status(201);
     } catch (err: any) {
-      throw new AppError(err.message);
+      throw new AppError(err.message, err.status);
     }
   }
 }
