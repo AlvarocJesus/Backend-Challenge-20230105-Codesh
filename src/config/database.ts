@@ -10,11 +10,19 @@ const pool = new Pool({
   password: process.env.DB_PASSWORD,
   port: 5432 || process.env.DB_PORT,
 });
+let databaseStatus: string;
 
 pool.on('connect', () => {
-  console.log('Base de Dados conectado com sucesso!');
+  try {
+    console.log('Base de Dados conectado com sucesso!');
+    databaseStatus = 'database connected';
+  } catch (err) {
+    databaseStatus = 'database connected';
+  }
 });
 
 export default async function query(text?: any, params?: any): Promise<void> {
   pool.query(text, params);
 }
+
+export { databaseStatus };

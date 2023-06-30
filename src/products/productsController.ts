@@ -3,6 +3,7 @@ import { ProductsService } from './productsService';
 import fs from 'fs';
 import process from 'process';
 import AppError from '../errors/AppError';
+import { databaseStatus } from '../config/database';
 
 const productsService = new ProductsService();
 
@@ -10,13 +11,11 @@ export class ProductsController {
   async statsSystem() {
     // ultima execucao do cron
     const lastCronExecute = fs.readFileSync('./logs.txt').toString();
-    // Uso da memoria e tempo em pe
-    console.log(process.memoryUsage());
-    console.log(process.uptime());
 
     const dataSystem = {
-      databaseStats: '',
+      databaseStatus,
       lastCronExecute,
+      // Uso da memoria e tempo em pe
       memoryUsage: process.memoryUsage(),
       uptime: new Date(process.uptime()),
     };
