@@ -1,3 +1,5 @@
+import cron from 'node-cron';
+
 async function teste() {
   const res = await fetch(
     'https://challenges.coode.sh/food/data/json/index.txt'
@@ -21,4 +23,5 @@ async function teste() {
     const json = await res.json();
   } */
 }
-teste();
+
+cron.schedule('0 0 * * *', () => teste());
