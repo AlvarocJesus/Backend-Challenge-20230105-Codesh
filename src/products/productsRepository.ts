@@ -11,6 +11,40 @@ export class ProductsRepository {
     }
   }
 
+  async saveProduct(data: ProductsDTO): Promise<void> {
+    try {
+      return await db(
+        'INSERT INTO products VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23)',
+        [
+          data.code,
+          data.imported_t,
+          data.url,
+          data.creator,
+          data.created_t,
+          data.last_modified_t,
+          data.product_name,
+          data.quantity,
+          data.brands,
+          data.categories,
+          data.labels,
+          data.cities,
+          data.purchase_places,
+          data.stores,
+          data.ingredients_text,
+          data.traces,
+          data.serving_size,
+          data.serving_quantity,
+          data.nutriscore_score,
+          data.nutriscore_grade,
+          data.main_category,
+          data.image_url,
+        ]
+      );
+    } catch (err: any) {
+      throw new AppError(err);
+    }
+  }
+
   async getProduct(code: string): Promise<void> {
     try {
       return await db('SELECT * FROM products WHERE code = $1', [code]);

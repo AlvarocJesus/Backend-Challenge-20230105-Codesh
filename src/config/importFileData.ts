@@ -1,5 +1,8 @@
 import cron from 'node-cron';
 import fs from 'fs';
+import { ProductsRepository } from '../products/productsRepository';
+
+const productsRepository = new ProductsRepository();
 
 async function teste() {
   const res = await fetch(
@@ -15,18 +18,19 @@ async function teste() {
     `https://challenges.coode.sh/food/data/json/${array[0]}`
   );
 
-  const json = await data.json();
-  const arrayBuffer = await data.arrayBuffer();
-  console.log({ data, json, arrayBuffer });
+  // const json = await data.json();
+  // const arrayBuffer = await data.arrayBuffer();
+  // console.log({ data, json, arrayBuffer });
 
-  /*  for await (const filename of array) {
+   for await (const filename of array) {
     const res = await fetch(
       `https://challenges.coode.sh/food/data/json/${filename}`
     );
     const json = await res.json();
-  } */
+    await productsRepository.saveProduct(json);
+  }
 }
-// teste();
+
 cron.schedule('0 0 * * *', () => {
   // Data to write on file
   let data = `${new Date().toUTCString()} 
