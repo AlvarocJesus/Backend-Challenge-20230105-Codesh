@@ -11,7 +11,7 @@ routes.get('/', productsController.statsSystem);
 routes.get('/products', productsController.listAllProducts);
 
 // Será responsável por receber atualizações do Projeto Web
-routes.put('/products/:code');
+routes.put('/products/:code', productsController.updateProduct);
 
 // Mudar o status do produto para trash
 routes.delete('/products/:code', productsController.deleteProduct);

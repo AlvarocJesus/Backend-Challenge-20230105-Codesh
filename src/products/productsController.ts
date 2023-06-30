@@ -9,10 +9,19 @@ const productsService = new ProductsService();
 export class ProductsController {
   async statsSystem() {
     // ultima execucao do cron
-    fs.readFileSync('../../logs.txt');
+    const lastCronExecute = fs.readFileSync('./logs.txt').toString();
     // Uso da memoria e tempo em pe
     console.log(process.memoryUsage());
-    console.log(new Date(process.uptime()));
+    console.log(process.uptime());
+
+    const dataSystem = {
+      databaseStats: '',
+      lastCronExecute,
+      memoryUsage: process.memoryUsage(),
+      uptime: new Date(process.uptime()),
+    };
+
+    return dataSystem;
   }
 
   async listAllProducts(
@@ -37,6 +46,22 @@ export class ProductsController {
       console.log('entrou no controller');
       const { code } = req.params;
       const products = await productsService.listProduct(code);
+
+      return res.json({ products }).status(201);
+    } catch (err: any) {
+      throw new AppError(err.message);
+    }
+  }
+
+  async updateProduct(
+    req: Request,
+    res: Response
+  ): Promise<Response<any, Record<string, any>> | undefined> {
+    try {
+      console.log('entrou no controller');
+      const { code } = req.params;
+      const data = req.body;
+      const products = await productsService.updateProduct(code, data);
 
       return res.json({ products }).status(201);
     } catch (err: any) {
