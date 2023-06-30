@@ -1,4 +1,4 @@
-export class Products{
+export class ProductsDTO{
   /*  "code": 20221126,
    "status": "published",
    "imported_t": "2020-02-07T16:00:00Z",
