@@ -5,7 +5,7 @@ const routes = Router();
 const productsController = new ProductsController();
 
 // Detalhes da API, se conexão leitura e escritura com a base de dados está OK, horário da última vez que o CRON foi executado, tempo online e uso de memória.
-routes.get('/');
+routes.get('/', productsController.statsSystem);
 
 // Listar todos os produtos da base de dados, adicionar sistema de paginação para não sobrecarregar o REQUEST.
 routes.get('/products', productsController.listAllProducts);
