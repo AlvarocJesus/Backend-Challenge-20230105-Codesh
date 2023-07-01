@@ -21,10 +21,12 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 ## Funcionalidades
 
-- [x] Listar todos os usuários com seus endereços e contatos
-- [x] Listando um único usuário
-- [x] Listando todos os endereços de um único usuário
-- [x] Listando todos os contatos de um único usuário
+- [x] Importar dados dos arquivos apos buscar ele no endpoint
+- [x] Exibir status do sistema
+- [x] Exibir detalhes de um produto
+- [x] Atualizar dados de um produto
+- [x] Mudar status do produto para ``trash``
+- [x] Exibir todos os produtos
 
 ## Variáveis de ambiente
 
@@ -51,6 +53,9 @@ $ cd Desafio_Tecnico_LinkApi
 
 # Para instalar as dependências que serão usadas
 $ npm i ou npm init
+
+# Para fazer o build do projeto funcionar, rode o comando abaixo
+$ npm run start:build
 
 # Para fazer o projeto funcionar, rode o comando abaixo
 $ npm run start
