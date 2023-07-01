@@ -31,7 +31,11 @@ As seguintes ferramentas foram usadas na construção do projeto:
 Para o correto funcionamento do projeto, será preciso adicionar a seguinte variável de ambiente ao arquivo `.env` do projeto.
 
 ```.env
-BASE_URL=https://62151ae9cdb9d09717adf48c.mockapi.io/api/v1
+DB_USER=ooteualy
+DB_HOST=postgres://ooteualy:opo5-JqpS2LtUu5M5HSLXCLf3Qv1TZEG@silly.db.elephantsql.com/ooteualy
+DB_PASSWORD=opo5-JqpS2LtUu5M5HSLXCLf3Qv1TZEG
+DB_DATABASE=ooteualy
+DB_PORT=5432
 ```
 
 ## Desenvolvimento
@@ -53,27 +57,5 @@ $ npm run start
 
 # O servidor inciará na porta:3000 - acesse <http://localhost:3000/api>
 ```
-
-## Screen Shots
-
-- Fluxograma do projeto
-
-![Fluxograma](./doc/image/fluxograma.png)
-
-- Listando todos os dados dos usuários
-
-![Fluxograma](./doc/image/listAllUsers.png)
-
-- Listando um único usuário
-
-![Fluxograma](./doc/image/listOneUser.png)
-
-- Listando todos os endereços de um único usuário
-
-![Fluxograma](./doc/image/listUserAddress.png)
-
-- Listando todos os contatos de um único usuário
-
-![Fluxograma](./doc/image/listUserContact.png)
 
 ```This is a challenge by Coodesh```
