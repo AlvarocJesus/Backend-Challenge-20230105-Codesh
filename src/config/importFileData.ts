@@ -11,20 +11,26 @@ async function teste() {
   const text = await res.text();
   let array = text.split('\n');
   array.pop();
-  array = array.map((item) => item.replace('.gz', ''));
-  // console.log({ array });
 
-  const data = await fetch(
-    `https://challenges.coode.sh/food/data/json/${array[0]}`
+  /* const data = await fetch(
+    `https://challenges.coode.sh/food/data/json/${array[0]}`,
+    {
+      headers: {
+        'Content-Type': /* 'application/json' 'text/plain; charset=UTF-8',
+      },
+    }
   );
 
-  // const json = await data.json();
-  // const arrayBuffer = await data.arrayBuffer();
-  // console.log({ data, json, arrayBuffer });
+  console.log(await data.text()); */
 
-   for await (const filename of array) {
+  for await (const filename of array) {
     const res = await fetch(
-      `https://challenges.coode.sh/food/data/json/${filename}`
+      `https://challenges.coode.sh/food/data/json/${filename}`,
+      {
+        headers: {
+          'Content-Type': /* 'application/json' */ 'text/plain; charset=UTF-8',
+        },
+      }
     );
     const json = await res.json();
     await productsRepository.saveProduct(json);
