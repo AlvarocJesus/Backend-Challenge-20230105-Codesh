@@ -1,9 +1,9 @@
-import { Pool } from 'pg';
+import { Client } from 'pg';
 import dotenv from 'dotenv';
 dotenv.config();
 
 // ==> Conexão com a Base de Dados:
-const pool = new Pool({
+export const pool = new Client({
   user: process.env.DB_USER,
   host: process.env.DB_HOST,
   database: process.env.DB_DATABASE,
@@ -12,17 +12,21 @@ const pool = new Pool({
 });
 let databaseStatus: string;
 
-pool.on('connect', () => {
+/* async function connect() {
+  await pool.connect();
+} */
+
+/* pool.on('connect', () => {
   try {
     console.log('Base de Dados conectado com sucesso!');
     databaseStatus = 'database connected';
   } catch (err) {
     databaseStatus = 'database connected';
   }
-});
+}); */
 
-export default async function query(text?: any, params?: any): Promise<void> {
+/* export default async function query(text?: any, params?: any){
+  await connect()
   pool.query(text, params);
-}
+} */
 
-export { databaseStatus };

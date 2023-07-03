@@ -12,7 +12,7 @@ export class ProductsService {
     }
   }
 
-  async listProduct(code: string): Promise<void> {
+  async listProduct(code: string) {
     try {
       return await productsRepository.getProduct(code);
     } catch (err: any) {
@@ -20,7 +20,7 @@ export class ProductsService {
     }
   }
 
-  async updateProduct(code: string, data: ProductsDTO): Promise<void> {
+  async updateProduct(code: string, data: ProductsDTO) {
     try {
       return await productsRepository.updateProduct(code, data);
     } catch (err: any) {
@@ -28,7 +28,7 @@ export class ProductsService {
     }
   }
 
-  async deleteProduct(code: string): Promise<void> {
+  async deleteProduct(code: string) {
     try {
       return await productsRepository.removeProducts(code);
     } catch (err: any) {

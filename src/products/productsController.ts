@@ -3,7 +3,7 @@ import { ProductsService } from './productsService';
 import fs from 'fs';
 import process from 'process';
 import AppError from '../errors/AppError';
-import { databaseStatus } from '../config/database';
+import { pool } from '../config/database';
 
 const productsService = new ProductsService();
 
@@ -13,7 +13,7 @@ export class ProductsController {
     const lastCronExecute = fs.readFileSync('./logs.txt').toString();
 
     const dataSystem = {
-      databaseStatus,
+      databaseStatus: await pool.connect(),
       lastCronExecute,
       // Uso da memoria e tempo em pe
       memoryUsage: process.memoryUsage(),
