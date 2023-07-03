@@ -63,4 +63,7 @@ $ npm run start
 # O servidor inciará na porta:3000 - acesse <http://localhost:3000/api>
 ```
 
+## Vídeo apresentação do desafio e código
+[![Watch the video](image.png)](https://www.loom.com/share/9095fb1c7e7b404c9d8b42dc5411ee0a)
+
 ```This is a challenge by Coodesh```

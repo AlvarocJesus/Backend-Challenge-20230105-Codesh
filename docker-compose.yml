@@ -5,7 +5,7 @@ services:
     command: "npm run start:build && npm run start"
     working_dir: /home/node/app
     environment:
-      - NODE_ENv=production
+      - NODE_ENV=production
     expose:
       - "3000"
     ports:
