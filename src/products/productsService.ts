@@ -4,9 +4,9 @@ import { ProductsRepository } from './productsRepository';
 
 const productsRepository = new ProductsRepository();
 export class ProductsService {
-  async listAllProducts(): Promise<void> {
+  async listAllProducts(page: number, limit: number) {
     try {
-      return await productsRepository.getAllProducts();
+      return await productsRepository.getAllProducts(page, limit);
     } catch (err: any) {
       throw new AppError(err.message, err.status);
     }

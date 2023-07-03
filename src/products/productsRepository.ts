@@ -3,9 +3,16 @@ import AppError from '../errors/AppError';
 import { ProductsDTO } from './ProductsDTO';
 
 export class ProductsRepository {
-  async getAllProducts(): Promise<void> {
+  async getAllProducts(page: number, limit: number) {
     try {
-      return await db('SELECT * FROM products');
+      return await db(
+        `
+      SELECT * FROM products
+      ORDER BY "products"."code"
+      LIMIT $2
+      OFFSET (($1 - 1) * $2);`,
+        [page, limit]
+      );
     } catch (err: any) {
       throw new AppError(err);
     }

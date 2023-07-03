@@ -23,12 +23,11 @@ export class ProductsController {
     return dataSystem;
   }
 
-  async listAllProducts(
-    req: Request,
-    res: Response
-  ): Promise<Response<any, Record<string, any>> | undefined> {
+  async listAllProducts(req: Request, res: Response) {
     try {
-      const products = await productsService.listAllProducts();
+      const { page, limit } = req.params;
+
+      const products = await productsService.listAllProducts(parseInt(page), parseInt(limit));
 
       return res.json({ products }).status(201);
     } catch (err: any) {
