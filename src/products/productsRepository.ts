@@ -9,7 +9,7 @@ export class ProductsRepository {
 
       return await pool.query(
         `
-      SELECT * FROM products
+      SELECT * FROM product
       ORDER BY "products"."code"
       LIMIT $2
       OFFSET (($1 - 1) * $2);`,
@@ -25,7 +25,7 @@ export class ProductsRepository {
       await pool.connect();
 
       return await pool.query(
-        'INSERT INTO products VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23)',
+        'INSERT INTO product VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23)',
         [
           data.code,
           data.imported_t,
@@ -60,7 +60,7 @@ export class ProductsRepository {
     try {
       await pool.connect();
 
-      return await pool.query('SELECT * FROM products WHERE code = $1', [code]);
+      return await pool.query('SELECT * FROM product WHERE code = $1', [code]);
     } catch (err: any) {
       throw new AppError(err);
     }
@@ -71,7 +71,7 @@ export class ProductsRepository {
       await pool.connect();
 
       return await pool.query(
-        'UPDATE products SET status=$2, imported_t=$3, url=$4, creator=$5, created_t=$6, last_modified_t=$7, product_name=$8, quantity=$9, brands=$10, categories=$11, labels=$12, cities=$13, purchase_places=$14, stores=$15, ingredients_text=$16, traces=$17, serving_size=$18, serving_quantity=$19, nutriscore_score=$20, nutriscore_grade=$21, main_category=$22, image_url=$23, WHERE code = $1',
+        'UPDATE product SET status=$2, imported_t=$3, url=$4, creator=$5, created_t=$6, last_modified_t=$7, product_name=$8, quantity=$9, brands=$10, categories=$11, labels=$12, cities=$13, purchase_places=$14, stores=$15, ingredients_text=$16, traces=$17, serving_size=$18, serving_quantity=$19, nutriscore_score=$20, nutriscore_grade=$21, main_category=$22, image_url=$23, WHERE code = $1',
         [
           code,
           data.imported_t,
@@ -106,7 +106,7 @@ export class ProductsRepository {
     try {
       await pool.connect();
 
-      return await pool.query('UPDATE products SET status = trash WHERE code = $1', [
+      return await pool.query('UPDATE product SET status = trash WHERE code = $1', [
         code,
       ]);
     } catch (err: any) {
